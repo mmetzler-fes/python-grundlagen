@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Vokabel Eingabe {% endblock %}</h1>
+      <div class="row">
+        <div class="column-md-6"> 
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Vokabel (deutsch)</th>
+                <th scope="col">Vokabel</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for vokabel in payload %}
+              <tr class="table-active">
+                <td>{{vokabel.name}}</td>
+                <td>{{vokabel.vokabel}}</td>
+                <td><a href="/vokabel/delete/{{vokabel.rowid}}"class="btn btn-danger">Delete</a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <div class="column-md-6">
+          <form method="POST" action="/vokabel/add">
+            <label for="name">Vokabel (deutsch)</label>
+            <input type="text" class="form-control" id="name" name="name">
+            <label for="vokabel">Vokabel</label>
+            <input type="text" class="form-control" id="vokabel" name="vokabel">
+            <button type="submit" class="btn btn-primary">Add</button>
+          </form>
+        </div>
+      </div>
+{% endblock %}

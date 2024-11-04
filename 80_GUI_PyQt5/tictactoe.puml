@@ -1,0 +1,31 @@
+@startuml
+
+start
+
+:Initialisiere das Spielfeld;
+:Setze den aktuellen Spieler auf Spieler X;
+
+repeat
+  :Zeige das Spielfeld;
+  :Frage den aktuellen Spieler nach seinem Zug;
+  if (Ist der Zug gültig?)
+    :Setze das gewählte Feld auf das Symbol des aktuellen Spielers;
+    if (Hat der aktuelle Spieler gewonnen?)
+      :Zeige eine Siegesmeldung;
+      stop
+    endif
+
+    if (Ist das Spielfeld voll?)
+      :Zeige eine Meldung für ein unentschiedenes Spiel;
+      stop
+    endif
+
+    :Wechsle den aktuellen Spieler (X wird zu O und umgekehrt);
+  else
+    :Zeige eine Fehlermeldung und bitte den Spieler erneut um einen Zug;
+  endif
+repeat while (Spiel ist nicht vorbei)
+
+stop
+
+@enduml
